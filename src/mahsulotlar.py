@@ -1,5 +1,4 @@
 # Smart do'kon - mahsulotlar bilan ishlash
-
 nomi = "Non"
 narxi = 4000
 miqdori = 25
