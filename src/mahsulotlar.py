@@ -53,4 +53,44 @@ def chegirma_hisobla(jami):
         print("Chegirma mavjud emas.")
         print("To'lanadigan summa:", jami, "so'm")
 chegirma_hisobla(jami_summa)
+def mahsulotlarni_korsat():
+    print("\n--- MAHSULOTLAR RO'YXATI ---")
+    for mahsulot in mahsulotlar:
+        print(
+            mahsulot["nomi"],
+            "| Narxi:", mahsulot["narxi"],
+            "| Miqdori:", mahsulot["miqdori"]
+        )
+
+mahsulotlarni_korsat()
+def mahsulot_qidir(nomi):
+    for mahsulot in mahsulotlar:
+        if mahsulot["nomi"].lower() == nomi.lower():
+            print("Topildi:", mahsulot)
+            return
+    print("Bunday mahsulot topilmadi.")
+
+mahsulot_qidir("Sut")
+mahsulot_qidir("Guruch")
+def mahsulot_sotish(nomi, soni):
+    for mahsulot in mahsulotlar:
+        if mahsulot["nomi"].lower() == nomi.lower():
+            if soni <= 0:
+                print("Sotuv miqdori noto'g'ri.")
+                return
+            if mahsulot["miqdori"] >= soni:
+                mahsulot["miqdori"] -= soni
+                summa = mahsulot["narxi"] * soni
+                print(soni, "dona", nomi, "sotildi.")
+                print("Jami summa:", summa, "so'm")
+                print("Qoldiq:", mahsulot["miqdori"])
+            else:
+                print("Omborda mahsulot yetarli emas.")
+            return
+    print("Mahsulot topilmadi.")
+mahsulot_sotish("Non", 3)
+mahsulot_sotish("Sut", 5)
+mahsulot_sotish("Shakar", 100)
+mahsulot_sotish("Choy", 2)
+mahsulot_sotish("Non", -2)
 
